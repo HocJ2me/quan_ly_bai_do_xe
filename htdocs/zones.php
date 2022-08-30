@@ -3,6 +3,8 @@
 <head>
 <title>Parking Zones</title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+	 <meta http-equiv="refresh" content="5">
+
 	<?php
 			include('inc/head.php');
 			include('inc/connect.php');
