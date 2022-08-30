@@ -20,8 +20,17 @@
 	<section id="content">
 	<img src="src/bg.png" style="position:absolute; z-index:-1; margin:0;"/>
 	<p class="phead">Thông tin bãi đỗ xe</p>
+	<?php 
+				$sql="SELECT * FROM `thong_tin_diem_do` WHERE nhiet_do > 50;";
+				$result=mysqli_query($conn, $sql);
+				$count=mysqli_num_rows($result);
+				if($count>0)
+				{	
+					$myAudioFile = "Tieng-coi-canh-bao.mp3";
+					echo '<EMBED SRC="'.$myAudioFile.'" HIDDEN="TRUE" AUTOSTART="TRUE"></EMBED>';
+				}
 	
-	
+	?>
 	<div class="strt"> <p>Bãi đỗ xe A</p>
 	<table class="gridtable">
 		<?php $street ="CITY HALL"; ?>
