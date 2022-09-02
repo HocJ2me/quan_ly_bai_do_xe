@@ -11,20 +11,24 @@ void setup()
   Servo_Setup();
   Wifi_Setup();
 }
+
 int isNewTemperatureData = -1; 
+int isNewTag = -1;
+
 void loop() {
   isNewTemperatureData = Serial_GetData();
   if(isNewTemperatureData > -1)
   {
     Server_PostTemperature(temp1_c,temp2_c,temp3_c,temp4_c,temp5_c);
-    
+    Server_PostPosition(position_1, position_2, position_3, position_4, position_5);
     int numberCar = Server_GetNumberCar();
     StaticJsonDocument<200> doc;
     doc["car"] = numberCar;
     doc["barrier"] = "CLOSE";
     serializeJson(doc, serial_ESP);
   }
-  int isNewTag = MRFC522_GetData();
+  
+  isNewTag = MRFC522_GetData();
   String rfid_Str = "";
   if(isNewTag == 1)
   {  
@@ -43,12 +47,15 @@ void loop() {
     }
     rfid_Str += String(nuidPICC[3], HEX);
     Server_PostInOut(rfid_Str);
+    
     int numberCar = Server_GetNumberCar();
     StaticJsonDocument<200> doc;
+    
     doc["car"] = numberCar;
     doc["barrier"] = "OPEN";
     serializeJson(doc, serial_ESP);
     Servo_Open();
+    
     doc["car"] = numberCar;
     doc["barrier"] = "CLOSE";
     serializeJson(doc, serial_ESP);

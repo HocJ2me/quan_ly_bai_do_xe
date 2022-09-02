@@ -36,12 +36,25 @@ int Serial_GetData()
           float t3 = doc["t3"];
           float t4 = doc["t4"];
           float t5 = doc["t5"];
+
+          int d1 = doc["d1"];
+          int d2 = doc["d2"];
+          int d3 = doc["d3"];
+          int d4 = doc["d4"];
+          int d5 = doc["d5"];
           
           temp1_c = t1;
           temp2_c = t2;
           temp3_c = t3;
           temp4_c = t4;
           temp5_c = t5;
+
+          position_1 = d1;
+          position_2 = d2;
+          position_3 = d3;
+          position_4 = d4;
+          position_5 = d5;
+          
       }
       return 1;
 }

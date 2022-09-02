@@ -17,7 +17,8 @@ if ($_SERVER["REQUEST_METHOD"] == "GET")
 	}
 	 
     $check = "1";
-	$sql = "select * from thong_tin_diem_do where rfid ='".$rfid."'";
+	$sql = "select * from thong_tin_ve_xe where rfid ='".$rfid."'";
+	//echo $sql;
 	$result = mysqli_query($conn, $sql);
 	$num = mysqli_num_rows($result);		
 	if ($result && $num > 0)
@@ -36,7 +37,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET")
 				}
 			}			
 		}
-		$sql = "UPDATE `thong_tin_diem_do` SET `trang_thai`='".$check."' WHERE `rfid`='".$rfid."'";
+		$sql = "UPDATE `thong_tin_ve_xe` SET `trang_thai`='".$check."' WHERE `rfid`='".$rfid."'";
 		echo $sql;
 		$result = mysqli_query($conn, $sql);
 		

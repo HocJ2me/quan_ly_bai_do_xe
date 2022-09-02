@@ -12,3 +12,4 @@ const char* password = STAPSK;
 const int PIN_Servo = D2;
 
 float temp1_c = 0, temp2_c = 0, temp3_c = 0, temp4_c = 0, temp5_c = 0;
+int position_1 = 0,position_2 = 0, position_3 = 0, position_4 = 0, position_5 = 0; 

@@ -14,7 +14,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET")
 		die("Kết nối thất bại: " . mysqli_connect_error());
 	}
 	 
-	$sql = "SELECT COUNT(*) FROM `thong_tin_diem_do` WHERE trang_thai = '1';";
+	$sql = "SELECT COUNT(*) FROM `thong_tin_ve_xe` WHERE trang_thai = '1';";
 	$result = mysqli_query($conn, $sql);
 	$num = mysqli_num_rows($result);		
 	if ($result && $num > 0)

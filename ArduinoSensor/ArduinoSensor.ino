@@ -18,9 +18,9 @@ void setup() {
   Serial.begin(9600);
   while (!Serial) continue;
   sensors.begin();  // Start up the library
-  for(int i=8;i<=11;i++)
+  for(int i=8;i<=12;i++)
     pinMode(i, INPUT);
-  pinMode(12, OUTPUT);
+//  pinMode(12, OUTPUT);
   lcd.init();
   lcd.backlight();
   lcd.setCursor(0,0);
@@ -41,20 +41,20 @@ void loop()
     doc["t4"] = t4 = sensors.getTempCByIndex(3);
     doc["t5"] = t5 = sensors.getTempCByIndex(4);
 
-    if(t1 > 50 || t2 > 50 || t3 > 50 || t4 > 50 || t5 > 50 )
-    {
-      digitalWrite(12, HIGH);
-    }
-    else
-    {
-      digitalWrite(12, LOW);
-    }
+//    if(t1 > 50 || t2 > 50 || t3 > 50 || t4 > 50 || t5 > 50 )
+//    {
+//      digitalWrite(12, HIGH);
+//    }
+//    else
+//    {
+//      digitalWrite(12, LOW);
+//    }
   
-    doc["d1"] = digitalRead(8);
-    doc["d2"] = digitalRead(9);
-    doc["d3"] = digitalRead(10);
-    doc["d4"] = digitalRead(11);
-    doc["d5"] = digitalRead(12);
+    doc["d1"] = !digitalRead(8);
+    doc["d2"] = !digitalRead(9);
+    doc["d3"] = !digitalRead(10);
+    doc["d4"] = !digitalRead(11);
+    doc["d5"] = !digitalRead(12);
 
     float t_sum = (t1 + t2 + t3 + t4 + t5)/5.0;
     lcd.setCursor(0,0);

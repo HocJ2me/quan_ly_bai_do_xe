@@ -32,6 +32,43 @@ void Wifi_Setup()
   Serial.println(WiFi.localIP());
 }
 
+void Server_PostPosition(float d1_yn, float d2_yn, float d3_yn, float d4_yn, float d5_yn, String host = LOCALHOST)
+{
+  
+  host += "esp-post-position.php?";
+  host += "d1=" + String(d1_yn);
+  host += "&d2=" + String(d2_yn);
+  host += "&d3=" + String(d3_yn);
+  host += "&d4=" + String(d4_yn);
+  host += "&d5=" + String(d5_yn);
+  
+  Serial.print("connecting to ");
+  Serial.println(host);
+  WiFiClient client;
+
+    HTTPClient http;
+
+    Serial.print("[HTTP] begin...\n");
+    if (http.begin(client, host)) {  // HTTP
+
+
+      Serial.print("[HTTP] GET...\n");
+      // start connection and send HTTP header
+      int httpCode = http.GET();
+
+      // httpCode will be negative on error
+      if (httpCode > 0) 
+      {
+      } else 
+      {
+        Serial.printf("[HTTP] GET... failed, error: %s\n", http.errorToString(httpCode).c_str());
+      }
+
+      http.end();
+    } else {
+      Serial.printf("[HTTP} Unable to connect\n");
+    }
+}
 void Server_PostTemperature(float t1_c, float t2_c, float t3_c, float t4_c, float t5_c, String host = LOCALHOST)
 {
   
@@ -68,7 +105,6 @@ void Server_PostTemperature(float t1_c, float t2_c, float t3_c, float t4_c, floa
     } else {
       Serial.printf("[HTTP} Unable to connect\n");
     }
-
 }
 void Server_PostInOut(String rfid_Str,  String host = LOCALHOST)
 {
