@@ -1,9 +1,9 @@
 #ifndef STASSID
-#define STASSID "BK Star"
-#define STAPSK  "bkstar2021"
+#define STASSID "Bai do xe"
+#define STAPSK  "toan1999"
 #endif
 
-String LOCALHOST = "http://192.168.1.27/";
+String LOCALHOST = "http://humg-doxe.000webhostapp.com/";
 int port = 80;
 
 const char* ssid     = STASSID;
